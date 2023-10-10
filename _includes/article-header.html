@@ -1,0 +1,12 @@
+{% if post %}
+  {% assign article = post %}
+{% else %}
+  {% assign article = page %}
+{% endif %}
+<div class="post-desc horizontal-list">
+  <ul>
+    <li>{{ article.date | date_to_string }}</li>
+    <li>{{ article.author }}</li>
+    <li>Tags: {% for category in article.categories %}<a href="/{{ category | slugify }}/">{{category}}</a>{% unless forloop.last %}&nbsp;{% endunless %}{% endfor %}</li>
+  </ul>
+</div>
